@@ -1,6 +1,6 @@
 <?php
 
-include_once 'scc.php';
+include_once '../lib/scc.php';
 
 $scc = new ClientCommunicator();
 
