@@ -1,5 +1,9 @@
 # Server Client Communication
-This is a simple tool for a JS client to communicate with a PHP server on a single page app.
+This is a simple tool for a JavaScript client to communicate with a PHP server on a single page app.
+The whole communication works with events. The client emits an event to the server. The server
+processes the event and sends an event back.
+Events are represented as strings. Along with the event string, you can pass some event arguments.
+Event arguments are one-dimensional associative arrays (Arrays in PHP, Objects in JavaScript).
 
 ## API
 ### Client side: the `ServerCommunicator` class
