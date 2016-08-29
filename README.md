@@ -27,3 +27,14 @@ The `scc.js` file provides the `ServerCommunicator` class.
 
 `scc.setDefaultMethod(method)`
 * method string
+
+### Server side: the `ClientCommunicator` class
+The `scc.php` file provides the `ClientCommunicator` class.
+#### Constructor: `new ClientCommunicator()`
+
+#### Instance methods
+`$scc->getEvent()`
+
+`$scc->emit($event, $eventArguments)`
+* $event string
+* $eventArguments array

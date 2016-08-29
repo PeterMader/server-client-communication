@@ -13,9 +13,6 @@ class ClientCommunicator {
   }
 
   public function __destruct () {
-    if (ob_get_length() > $this->jsonLength) {
-      echo PHP_EOL . 'The reason why this didn\'t work is because you can do output only once.';
-    }
     ob_flush();
   }
 
@@ -58,7 +55,7 @@ class ClientCommunicator {
     return $this->event;
   }
 
-  public function emit ($evt, $eventArguments) {
+  public function emit ($evt, array $eventArguments) {
     $dataToSend = array(
       '_evt' => $evt,
     );
