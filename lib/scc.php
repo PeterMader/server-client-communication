@@ -2,7 +2,7 @@
 
 class ClientCommunicator {
 
-  private $jsonLength = 0;
+  protected $jsonLength = 0;
   protected $event;
   public $method = 'GET';
 

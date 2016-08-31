@@ -15,50 +15,73 @@ has a `getEventInfo` method which returns an `eventInfo` object. The `eventInfo`
 * `method` string The request method used in the request.
 * `duration` number The duration of the request.
 
+The supported request methods are `GET` and `POST`. If you specify another method, `GET` will be used.
+
 ## API
-### Client side: the `ServerCommunicator` class
+### Client side
+#### The `ServerCommunicator` class
 The `scc.js` file provides the `ServerCommunicator` class.
-#### Constructor: `new ServerCommunicator(serverUrl)`
+##### Constructor: `new ServerCommunicator(serverUrl)`
 * `serverUrl` string The URL of the main PHP file.
 
-#### Instance methods
+##### Instance methods
 `scc.emit(event [, eventArguments [, method]])`
-* `event` string
+Sends an event to the server.
+* `event` string The name of the event.
 * `eventArguments` object
-* `method` string
+* `method` string The request method. You can set the default method with `setDefaultMethod`.
 
 `scc.on(event, listener)`
 Adds a listener to the event.
-* `event` string
+* `event` string The name of the event.
 * `listener` function
 
 `scc.once(event, listener)`
 Adds a one-time listener to the event.
-* `event` string
+* `event` string The name of the event.
 * `listener` function
 
 `scc.request(event, eventArguments, listener, method)`
 This is a mixture of the `once` and the `emit` method. It sends an event to the
 server and calls the listener function with the response. Event listeners on the
 response event are *not* invoked.
-* `event` string
+* `event` string The name of the event.
 * `listener` function
 * `eventArguments` object
-* `method` string
+* `method` string The request method. You can set the default method with `setDefaultMethod`.
 
 `scc.remove(event)`
-* `event` string
+Removes all listeners of the event.
+* `event` string The name of the event.
 
-`scc.setDefaultMethod(method)`
-* `method` string
+`scc.setDefaultMethod([method])`
+Sets the default request method.
+* `method` string The name of the event.
 
-### Server side: the `ClientCommunicator` class
+### Server side
+#### The `ClientCommunicator` class
 The `scc.php` file provides the `ClientCommunicator` class.
-#### Constructor: `new ClientCommunicator()`
+##### Constructor: `new ClientCommunicator()`
 
-#### Instance methods
+##### Instance properties
+`$scc->method` string The method of the event request.
+
+##### Instance methods
 `$scc->getEvent()`
+Returns an instance of `ClientEvent`.
 
 `$scc->emit($event, $eventArguments)`
-* `$event` string
+Sends an event back to the client.
+* `$event` string The name of the event.
 * `$eventArguments` array
+
+#### The `ClientEvent` class
+The `scc.php` file provides the `ClientEvent` class.
+
+##### Instance properties
+`$event->name` string The name of the client event.
+
+##### Instance methods
+`$scc->getArgument($name)`
+Returns the value of the event argument with the name, or NULL, if it doesn't exist.
+* `$name` string The name of the argument.
