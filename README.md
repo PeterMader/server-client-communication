@@ -11,6 +11,7 @@ The client can listen to server events by setting event listeners to an event. T
 sent by the server are passed to the listener function in a `response` object. The `response` object
 has a `getEventInfo` method which returns an `eventInfo` object. The `eventInfo` object has this properties:
 * `path` string The requested URL.
+* `eventName` string The event sent from the server.
 * `method` string The request method used in the request.
 * `duration` number The duration of the request.
 
@@ -27,16 +28,26 @@ The `scc.js` file provides the `ServerCommunicator` class.
 * `method` string
 
 `scc.on(event, listener)`
+Adds a listener to the event.
 * `event` string
 * `listener` function
 
 `scc.once(event, listener)`
+Adds a one-time listener to the event.
 * `event` string
 * `listener` function
 
-`scc.request(event, listener)`
+`scc.request(event, eventArguments, listener, method)`
+This is a mixture of the `once` and the `emit` method. It sends an event to the
+server and calls the listener function with the response. Event listeners on the
+response event are *not* invoked.
 * `event` string
 * `listener` function
+* `eventArguments` object
+* `method` string
+
+`scc.remove(event)`
+* `event` string
 
 `scc.setDefaultMethod(method)`
 * `method` string
