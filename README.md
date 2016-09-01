@@ -46,8 +46,8 @@ This is a mixture of the `once` and the `emit` method. It sends an event to the
 server and calls the listener function with the response. Event listeners on the
 response event are *not* invoked.
 * `event` string The name of the event.
-* `listener` function
 * `eventArguments` object
+* `listener` function
 * `method` string The request method. You can set the default method with `setDefaultMethod`.
 
 `scc.remove(event)`
@@ -56,7 +56,7 @@ Removes all listeners of the event.
 
 `scc.setDefaultMethod([method])`
 Sets the default request method.
-* `method` string The name of the event.
+* `method` string The method to use as default. If not specified, `GET` will be used.
 
 ### Server side
 #### The `ClientCommunicator` class
