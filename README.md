@@ -85,7 +85,3 @@ The `scc.php` file provides the `ClientEvent` class.
 `$scc->getArgument($name)`
 Returns the value of the event argument with the name, or NULL, if it doesn't exist.
 * `$name` string The name of the argument.
-
-
-
-
