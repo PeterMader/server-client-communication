@@ -94,4 +94,13 @@ class ClientEvent {
     return null;
   }
 
+  public function hasArguments (array $arguments) {
+    foreach ($arguments as $argument) {
+      if (!array_key_exists($argument, $this->arguments)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
